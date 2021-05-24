@@ -1,0 +1,53 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[spanish]{babel}
+\usepackage{csquotes, graphicx, subcaption, hyperref, multicol}
+\renewcommand{\chaptername}{Capitulo}
+\title{Implatación de técnicas y herramientas de pentesting en el proceso de desarrollo de software}
+\author{Emilio J Roldán}
+
+\usepackage[backend=biber,style=verbose-note]{biblatex}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\addbibresource{bibliografia.bib} 
+% Load the package
+\usepackage[toc,section,automake]{glossaries}
+ 
+% Generate the glossary
+\makeglossaries
+\loadglsentries{glosario}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% list of tables
+%\listoftables
+%\addcontentsline{toc}{chapter}{List of Tables}
+
+% list of figures
+%\listoffigures
+%\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+
+\chapter{Introducción.}
+\input{chapters/01_introduction}
+
+\chapter{Análisis del estado del arte}
+\input{chapters/02_Análisis del estado del arte.tex} 
+ 
+\chapter{Diseño solución técnica.}
+\input{chapters/03_Diseño de la solución técnica.tex}
+
+\chapter{Ejecución casos de prueba.}
+\input{chapters/04_EjecucionCasosPrueba.tex}
+
+\newpage
+\addcontentsline{toc}{section}{Bibliografia}
+\printbibliography[title=Bibliografia]
+
+%Print the glossary
+\printglossaries
+
+\end{document}

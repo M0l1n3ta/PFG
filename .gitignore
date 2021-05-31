@@ -290,3 +290,5 @@ TSWLatexianTemp*
 Referencias/
 Pruebas/
 build/
+*.tmp
+

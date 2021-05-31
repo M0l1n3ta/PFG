@@ -185,4 +185,68 @@ Es una herramienta de análisis de dependencias que intenta detectar vulnerabili
 un proyecto. Para ello, determina si existe un identificador de enumeración de plataforma común (CPE) para una dependencia determinada. Si lo encuentra, generará
 un informe vinculado a las entradas \gls{cve} asociadas.
 
+Actualmente OWASP Dependency-Check puede analizar dependencias de proyectos Java y .Net, que se encuentran totalmente soportados otros lenguajes como Ruby, Node.js, 
+PHP (composer), Swift Package Manager y Python tiene un soporte más limitado.
+
+El componente de análisis de dependencias de OWASP Dependency-Check puede ser ejecutado de las siguientes formas:
+
+\begin{itemize}
+    \item Ant task
+    \item \href{https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.6/dependency-check-6.1.6-release.zip}{Command Linet Tool}
+    \item grandle plugin
+    \item \href{https://search.maven.org/#artifactdetails%7Corg.owasp%7Cdependency-check-maven%7C6.1.6%7Cmaven-plugin}{Maven plugin}
+    \item SBT plugin
+\end{itemize}
+
+El uso de dependency-check desde la línea de comandos tiene los siguientes parámetros principales:
+
+begin{table}
+  \begin{center}
+  \caption{Parámetros línea comandos dependency-check}
+  \label{tab:tabla 1}
+  \begin{tabular}{c|c}
+    \textbf{Parámetro} & \textbf{Descripción}\\
+    \hline
+      --project & Especifica el nombre del proyecto que aparecerá en el reporte.\\ 
+      --scan & Directorio donde se encuentran las librerías de terceros.\\
+      --out &  Directorio de salida del reporte de análisis de dependencias.\\
+      --suppresion & Fichero .xml que contiene vulnerabilidades que deben de ser excluidas del reporte 
+      (falsos positivos)      
+  \end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+
 \subsection{Herramientas de análisis dinámico de código}
+Para las ejecuciones de análisis dinámico haremos uso de la herramienta Zed Attack Proxy (ZAP) de OWASP en su versión 2.10. OWASP Zap es una de las herramientas de 
+software para análisis dinámico de aplicaciones que es mantenida y distribuida por la organización \href{https://owasp.org/www-project-zap/}{OWASP}. Su principal objetivo es el 
+análisis de seguridades en aplicaciones web orientados a empresas, se caracteriza por ser de código abierto y totalmente gratuita.\\
+
+La Interfax de OWASP ZAP Desktop está compuesta de los siguientes elementos:
+\begin{figure}[h!]  
+    \includegraphics[width=\linewidth]{./imagenes/02_SonarQubeEditions.png}
+    \caption{Interfaz OWASP Zap}  
+    \label{fig:Interfaz OWASP Zap}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Barra menú:} Proporciona acceso a las funcionalidades manuales y automáticas de la aplicación.
+    \item \textbf{Barra herramientas:} Incluye botones de acceso rápido a las funciones más comunes.
+    \item \textbf{Panel vista árbol:} Muestra los sitios visitados, así como los scripts utilizados.
+    \item \textbf{espacio de trabajo:} Muestra las peticiones y respuestas de las peticiones y permite editarlas.
+    \item \textbf{Ventana de in formación:} Muestra los detalles de las herramientas automáticas y manuales utilizadas. 
+    \item \textbf{Pie} Muestra el resumen de alertas encontradas por los distintos escáneres realizados.
+\end{itemize}
+
+Para más información consultar documentación, \href{https://www.zaproxy.org/docs/desktop/ui/}{ver documentación ZAP UI}
+
+A la hora de ejecutar el análisis dinámico haremos uso de las siguientes políticas de pruebas 
+que serán ejecutados en cada una de las iteraciones para cada aplicación o sistema objetivo:
+
+\begin{itemize}
+    \item \textbf{Escáner regular:} Para ampliar las rutas válidas dentro de los dominios a evaluar más allá de la utilizadas en sesión de pruebas utilizada.
+    \item \textbf{Escaner Completo:} A partir del resultado del escáner regular, donde se ampliará la batería de pruebas a realizar.
+\end{itemize}

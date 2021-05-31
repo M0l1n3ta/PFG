@@ -1,1 +1,17 @@
 
+\section{Métodologia de pruebas} 
+
+Como metodología de pruebas para el proceso haremos uso 
+de \href{https://owasp.org/www-pdf-archive/OWASP_Application_Security_Verification_Standard_4.0-en.pdf}{OWASP Application Security Verification Standard (ASVS) 4.0} 
+que proporciona una base para probar los controles técnicos de seguridad de las aplicaciones web. El proyecto clasifica
+ los distintos controles en tres niveles. En este caso cubriremos todos los controles incluidos en el \textbf{nivel 2}.
+
+Para abordar el proceso de pentesting los dividiremos en varias fases que detallaremos a continuación, así como los documentos a generar y herramientas necesarias para cada fase.
+Dentro de las fases definidas en apartado 2.1.2 para la ejecución del proceso de pentesting ejecutaremos todas las fases menos la de explotación y Postexplotación.
+
+\section{Infraestructura de pruebas} 
+Como entorno de pruebas para la ejecución de los análisis de código; haremos uso de una máquina física y de un contenedor 
+de Docker con la siguientes características y herramientas instaladas en cada una de ellas:
+
+Para levantar el contenedor podemos hacer uso de dockercompose incluido en la carpeta \textbf{"entornoPrueba"} dentro de 
+las \href{https://github.com/M0l1n3ta/PFG/tree/master}{fuentes de proyecto}

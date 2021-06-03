@@ -186,14 +186,14 @@ un proyecto. Para ello, determina si existe un identificador de enumeración de 
 un informe vinculado a las entradas \gls{cve} asociadas.
 
 Actualmente OWASP Dependency-Check puede analizar dependencias de proyectos Java y .Net, que se encuentran totalmente soportados otros lenguajes como Ruby, Node.js, 
-PHP (composer), Swift Package Manager y Python tiene un soporte más limitado.
+PHP (composer), Swift Package Manager y Python tienen un soporte más limitado.
 
 El componente de análisis de dependencias de OWASP Dependency-Check puede ser ejecutado de las siguientes formas:
 
 \begin{itemize}
     \item Ant task
     \item \href{https://github.com/jeremylong/DependencyCheck/releases/download/v6.1.6/dependency-check-6.1.6-release.zip}{Command Linet Tool}
-    \item grandle plugin
+    \item Grandle plugin
     \item \href{https://search.maven.org/#artifactdetails%7Corg.owasp%7Cdependency-check-maven%7C6.1.6%7Cmaven-plugin}{Maven plugin}
     \item SBT plugin
 \end{itemize}
@@ -215,10 +215,13 @@ begin{table}
   \end{tabular}
 \end{center}
 \end{table}
-
-
-
-
+Ejemplo de uso:\\
+\begin{verbatim}
+  dependency-check.bat 
+      --project "juice-shop" 
+      --scan "D:\CodigoAnalisis\Seguridad\juice-shop\node_modules" 
+      --out "D:\CodigoAnalisis\Seguridad\WebGoat.NET\reports" 
+\end{verbatim}
 
 \subsection{Herramientas de análisis dinámico de código}
 Para las ejecuciones de análisis dinámico haremos uso de la herramienta Zed Attack Proxy (ZAP) de OWASP en su versión 2.10. OWASP Zap es una de las herramientas de 

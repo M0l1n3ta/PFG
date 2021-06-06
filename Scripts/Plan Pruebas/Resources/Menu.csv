@@ -1,0 +1,7 @@
+Settings|security.php
+commandEx|vulnerabilities/exec/
+csrf|vulnerabilities/csrf/
+upload|vulnerabilities/upload/
+sqli|vulnerabilities/sqli/
+xss_r|vulnerabilities/xss_r/
+xss_s|vulnerabilities/xss_s/

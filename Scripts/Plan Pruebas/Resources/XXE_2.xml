@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE data [<!ENTITY xxe SYSTEM "/etc/passwd">]>
+<feed>
+	<title>test</title>
+	<description>test</description>
+
+	<entry>
+		<title>Hello</title>
+		<link href="http://example.com"></link>
+		<content>&xxe;</content>
+	</entry>
+</feed>

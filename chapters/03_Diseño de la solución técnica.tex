@@ -1,4 +1,3 @@
-
 \section{Métodologia de pruebas} 
 
 Como metodología de pruebas para el proceso haremos uso 
@@ -18,15 +17,19 @@ En esta fase ejecutaremos el análisis estático de dependencias y generaremos u
 análisis estático servirán como base para crear un plan de pruebas para el análisis dinámico.
 \textbf{Análisis de vulnerabilidades.}\\
 En esta fase ejecutaremos el análisis dinámico de código a partir del plan de pruebas generado con la información obtenida en la fase anterior.
+
 En esta fase ejecutarán dos veces el escáner de análisis dinámico con distinto número de reglas:
+
 \begin{itemize}
     \item \textbf{Escanér regular:} Para descubrir todas las posibles rutas validados debajo de los dominios 
     a evaluar a partir del plan de pruebas definido con los datos de la fase anterior.
     \item \textbf{Escáner Comleto:} A partir del escáner regular, para obtener el reporte definitivo después 
     de revisar los errores encontrados para descartar los no relevantes y los falsos positivos.
 \end{itemize}
+
 \textbf{Generación de informes}\\
 Como resultado el proceso de ejecución de las pruebas de seguridad generaremos los siguientes documentos.
+
 \begin{itemize}
     \item Definición del plan de pruebas de seguridad.
     \item Reporte análisis estático de código.
@@ -35,17 +38,17 @@ Como resultado el proceso de ejecución de las pruebas de seguridad generaremos 
     \item Informe resultado ejecución pruebas de seguridad
 \end{itemize}
 
-
+\newpage
 \section{Infraestructura de pruebas} 
 Como entorno de pruebas para la ejecución de los análisis de código; haremos uso de una máquina física y de un contenedor 
 de Docker con la siguientes características y herramientas instaladas en cada una de ellas:
 
-\begin{table}
+\begin{table}[h!]
     \begin{center}
       \caption{Parámetros línea comandos dependency-check}
       \label{tab:Infraestructura de pruebas}
       \begin{tabular}{c|c|c}
-        \textbf{Características} & \textbf{Máquina física} & \textb{Contenedor}\\
+        \textbf{Características} & \textbf{Máquina física} & \textbf{Contenedor}\\
         \hline
         Sistema Operativo & Windows 10 Pro & Debian GNU/Linux 10 (buster)\\ 
         Herramientas & OWASP Zap 2.10
@@ -77,16 +80,17 @@ Una vez que se vena las siguientes líneas en el log:
     \caption{SonarQube server running}  
     \label{fig:5}
 \end{figure}
-
-Podremos acceder a la página de SonarQube en la url \href{http://localhost:9000}{http://localhost:9000}
+Podremos acceder a la página de SonarQube en 
+la url \href{http://localhost:9000}{http://localhost:9000}\\
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/06_SonarQubeServer_Webpage.png}
     \caption{SonarQube portal}  
     \label{fig:6}
 \end{figure}
-Docker Compose SonarQube:
-\begin{listing}[ht]
+
+Docker Compose SonarQube:\\
+\begin{listing}[h!]
     \inputminted{yaml}{./EntornoPruebas/SonarQube_8.2/docker-compose.yml}
-    \caption{Example from external file}
+    \caption{Docker Compose}
     \label{listing:3}
-  \end{listing}
+\end{listing}

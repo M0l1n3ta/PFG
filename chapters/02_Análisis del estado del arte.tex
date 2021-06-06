@@ -73,17 +73,8 @@ defectos, si es posible, así como el estado en que se encuentran en el momento
 de entrega de dicho reporte.
 
 \newpage
-\section{Herramientas de enumeración}
-
-El proceso de enumeración trataremos de recabar información de recurso accesibles del sistema 
-o aplicación. Para este proceso existen númerosas utilidades, entre las más utilizadas estarían:
-
-\begin{itemize}
-    \item Nmap:     Utilizada para el escaneo de puertos
-    \item Nikto:    Utilizada para recopilación de recursos disponibles.
-    \item Dirb:     Utilizada para recopilación de recursos disponibles.
-    \item TestSSL:  Utilizda para la revisión de certificados y mecanismos de cifrado SSL.
-\end{itemize}
+\section{Detalle y Clasificación de vulnerabilidades OWASP Top 10}
+\input{./chapters/02_2_DetalleClasificacionVulnerabilidades_OWASP_TOP_10_2017.tex}
 
 \newpage
 \section{Herramientas de análisis de código}
@@ -176,10 +167,10 @@ La versión \emph{“Community”} incluye escáneres para los siguientes lengua
 Además, mediante extensiones de la comunidad podemos añadir escáneres para los siguientes lenguajes:
 
 \begin{itemize}	
-    \item PL\\SQL
-    \item C\\C++
+    \item PL$\backslash$SQL
+    \item C$\backslash$C++
 \end{itemize}    
-
+\newpage
 \subsubsection{Dependency-check}
 Es una herramienta de análisis de dependencias que intenta detectar vulnerabilidades divulgadas públicamente contenidas en las dependencias de 
 un proyecto. Para ello, determina si existe un identificador de enumeración de plataforma común (CPE) para una dependencia determinada. Si lo encuentra, generará
@@ -198,9 +189,9 @@ El componente de análisis de dependencias de OWASP Dependency-Check puede ser e
     \item SBT plugin
 \end{itemize}
 
-El uso de dependency-check desde la línea de comandos tiene los siguientes parámetros principales:
+El uso de dependency-check desde la línea de comandos tiene los siguientes parámetros principales:\\
 
-begin{table}
+\begin{table}[h!]
   \begin{center}
   \caption{Parámetros línea comandos dependency-check}
   \label{tab:tabla 1}
@@ -215,6 +206,7 @@ begin{table}
   \end{tabular}
 \end{center}
 \end{table}
+
 Ejemplo de uso:\\
 \begin{verbatim}
   dependency-check.bat 
@@ -222,7 +214,7 @@ Ejemplo de uso:\\
       --scan "D:\CodigoAnalisis\Seguridad\juice-shop\node_modules" 
       --out "D:\CodigoAnalisis\Seguridad\WebGoat.NET\reports" 
 \end{verbatim}
-
+\newpage
 \subsection{Herramientas de análisis dinámico de código}
 Para las ejecuciones de análisis dinámico haremos uso de la herramienta Zed Attack Proxy (ZAP) de OWASP en su versión 2.10. OWASP Zap es una de las herramientas de 
 software para análisis dinámico de aplicaciones que es mantenida y distribuida por la organización \href{https://owasp.org/www-project-zap/}{OWASP}. Su principal objetivo es el 

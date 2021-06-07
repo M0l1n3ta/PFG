@@ -10,7 +10,7 @@ En su última versión las vulnerabilidades más comunes encontradas fueron las 
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/012_OWASP_Top_10_2017.png}
     \caption{OWASP Top 10 2017.}  
-    \label{fig:OWASP Top 10 2017}
+    \label{fig:1 - OWASP Top 10 2017}
 \end{figure}
 
 A continuación, detallamos en que consisten cada una de las vulnerabilidades listadas en el OWASP top 10:
@@ -33,7 +33,7 @@ la información de un usuario a partir de su identificador (ID):
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_1.png}
     \caption{Aplicación vulnerable SQLi.}  
-    \label{fig:SQLi 1}
+    \label{fig:2 - SQLi 1}
 \end{figure}
 
 Un uso normal generaría este tipo de peticiones:
@@ -41,29 +41,29 @@ Un uso normal generaría este tipo de peticiones:
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_2.png}
     \caption{Petición normal.}  
-    \label{fig:SQLi 2}
+    \label{fig:3 - SQLi 2}
 \end{figure}
 
+Pero si abusamos de la aplicación modificando el ID por la consulta:
 \begin{verbatim}
     %' union select user,password from users# 
 \end{verbatim}
 
 Se genera la siguiente petición:
-
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_3.png}
     \caption{SQLi example.}  
-    \label{fig:SQLi 3}
+    \label{fig:4 - SQLi 3}
 \end{figure}
 
 El resultado será que la aplicación nos devuelve todos los usuarios y password almacenados en la Base de datos:
-
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_4.png}
     \caption{Resultado ataque SQLi.}  
-    \label{fig:SQLi 3}
+    \label{fig:5 - SQLi 3}
 \end{figure}
 
+\newpage
 \subsection{A2:2017 - Pérdida de autenticación y gestión de sesiones (Broken Authentication)}
 
 Las funciones de la aplicación relacionadas a autenticación y gestión de sesiones son
@@ -135,7 +135,7 @@ fichero \textbf{"/etc/passwd"} y devolverá el contenido de este fichero en la r
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/015_XXE_Attack_1.png}
     \caption{Ataque XXE.}  
-    \label{fig:XXE attack}
+    \label{fig:6 - XXE attack}
 \end{figure}
 
 Por lo tanto, un ataque de entidad externa XML es un tipo de ataque contra una aplicación que analiza 
@@ -176,7 +176,7 @@ Por ejemplo, si tenemos una aplicación como la siguiente con un formulario de e
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/016_XSS_1.png}
     \caption{Aplicacion insegura XXS.}  
-    \label{fig:Aplicacion insegura XXS.}
+    \label{fig:7 - Aplicacion insegura XXS.}
 \end{figure}
 
 Si introducimos el siguiente script:
@@ -190,7 +190,7 @@ Vemos que al enviar el formulario se ejecuta el script en el navegador.
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/016_XSS_2.png}
     \caption{Ataque XXS.}  
-    \label{fig:Ataque XXS.}
+    \label{fig:8 - Ataque XXS.}
 \end{figure}
 
 Podemos distinguir tres tipos de ataques XSS:

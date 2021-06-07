@@ -38,6 +38,55 @@ Como resultado el proceso de ejecución de las pruebas de seguridad generaremos 
     \item Informe resultado ejecución pruebas de seguridad
 \end{itemize}
 
+\subsection{Generación reporte análisis estático de código}
+
+Para generar los reportes de análisis estático de código nos ayudaremos de una pequeña utilidad creada en Python, que hemos 
+denominado \textbf{“SonarQube Reporting Tool”}, implementada en Python que hace uso de los servicios web disponibles en SonarQube
+para recopilar los datos de los escáneres realizados e integrarlos con una plantilla base del 
+reporte para generar un reporte final con los datos extraídos por la herramienta más los comentarios del pentester.
+
+La aplicación esta disponible en GitHub, la podemos descargar en instalar con los siguientes comandos:
+\begin{verbatim}
+    git clone https://github.com/M0l1n3ta/SonarQubeReportingTool.git
+    cd SonarQubeReportingTool
+    pip3 install -r requirements.txt
+\end{verbatim}
+
+Para ejecutar la aplicación:
+\begin{verbatim}
+    python3 static_analysis_report_generator.py
+\end{verbatim}
+
+Para generar el reporte seleccionamos la primera opción \textbf{“Reporting tool”}:
+\begin{figure}[h!]  
+    \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_1.png}
+    \caption{SonarQube Reporting Tool}  
+    \label{fig:15 - SonarQube Reporting tool}
+\end{figure}
+
+Seleccionamos el Proyecto de Sonarqube del cual queremos generar el reporte estático de código:
+\begin{figure}[h!]  
+    \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_2.png}
+    \caption{select Sonarqube project}  
+    \label{fig:16}
+\end{figure}
+
+Finalmente seleccionamos la segunda opción “Generate detailed report” para generar el reporte:
+
+\begin{figure}[h!]  
+    \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_3.png}
+    \caption{Generar reporte análisis estatico}  
+    \label{fig:17}
+\end{figure}
+
+El reporte se generará en el directorio de ejecución:
+
+\begin{figure}[h!]  
+    \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_4.png}
+    \caption{Generar reporte análisis estatico}  
+    \label{fig:18}
+\end{figure}
+
 \newpage
 \section{Infraestructura de pruebas} 
 Como entorno de pruebas para la ejecución de los análisis de código; haremos uso de una máquina física y de un contenedor 
@@ -64,6 +113,7 @@ Para levantar el contenedor podemos hacer uso de dockercompose incluido en la ca
 las \href{https://github.com/M0l1n3ta/PFG/tree/master}{fuentes de proyecto}
 
 Para levantar el entorno ejecutamos:
+
 \begin{verbatim}
     docker-compose up
 \end{verbatim}
@@ -71,21 +121,21 @@ Para levantar el entorno ejecutamos:
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/04_DockerCompose_UP.png}
     \caption{Docker compose up}  
-    \label{fig:4}
+    \label{fig:19}
 \end{figure}
 
 Una vez que se vena las siguientes líneas en el log:
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/05_SonarQubeServerRunning.png}
     \caption{SonarQube server running}  
-    \label{fig:5}
+    \label{fig:20}
 \end{figure}
 Podremos acceder a la página de SonarQube en 
 la url \href{http://localhost:9000}{http://localhost:9000}\\
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/06_SonarQubeServer_Webpage.png}
     \caption{SonarQube portal}  
-    \label{fig:6}
+    \label{fig:21}
 \end{figure}
 
 Docker Compose SonarQube:\\

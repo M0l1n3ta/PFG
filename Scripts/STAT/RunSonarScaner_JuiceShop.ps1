@@ -1,5 +1,6 @@
 ﻿#Repositorio
 #https://github.com/bkimminich/juice-shop
+#git clone -b v12.7.2 https://github.com/bkimminich/juice-shop.git
 
 #region "Datos proyecto"
 $PSScriptRoot= "C:\Utilidades\sonar-scanner"

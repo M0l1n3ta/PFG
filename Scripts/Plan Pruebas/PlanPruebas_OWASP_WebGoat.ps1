@@ -1,12 +1,12 @@
 ﻿
-$urlbase = "http://192.168.43.157:8080"
-$zap_proxy = "http://172.22.225.205:8082" 
+$urlbase = "http://192.168.42.39:8080"
+$zap_proxy = "http://172.25.194.216:8082" 
 
 #---------------------------------------------------------------------------------------------------------------------------
 # Create User
 #---------------------------------------------------------------------------------------------------------------------------
 Clear-Host
-$createuser = $false
+$createuser = $true
 
 if($createuser){
     $body = "username=eroldann&password=password&matchingPassword=password&agree=agree"

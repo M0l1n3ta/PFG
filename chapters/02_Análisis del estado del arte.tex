@@ -1,7 +1,6 @@
-
 \section{Proceso de pentesting} 
 
-\subsection{¿que es un prueba de penetración o pentest?}
+\subsection{¿Que es un prueba de penetración o pentest?}
 Según la definición de OWASP \cite{web1} un test de penetración o pentesting, a veces denominado 
 prueba de caja negra, es esencialmente el arte de probar
 un sistema o aplicación para descubrir vulnerabilidades de seguridad, sin conocer el funcionamiento interno de la mismas. Normalmente el equipo 
@@ -11,6 +10,7 @@ que ese nivel de acceso encontrar vulnerabilidades que se puedan explotar en la 
 El propósito de la prueba de penetración es determinar la presencia 
 de vulnerabilidades potencialmente explotables y analizar el impacto de estas,
 sí se detecta alguna. La mejor forma de probar una defensa es tratando de penetrar en ella.
+\clearpage
 \newpage
 
 \subsection{Fases del prueba de intrusión}
@@ -72,11 +72,13 @@ el mismo el detalle de los defectos reportados en el sistema de gestión de
 defectos, si es posible, así como el estado en que se encuentran en el momento
 de entrega de dicho reporte.
 
+\clearpage
 \newpage
+
 \section{Detalle y Clasificación de vulnerabilidades OWASP Top 10}
 \input{./chapters/02_2_DetalleClasificacionVulnerabilidades_OWASP_TOP_10_2017.tex}
 
-\newpage
+
 \section{Herramientas de análisis de código}
 
 Detro de los procesos actuales de \gls{ssdlc} cada vez cobran más importacia la inclusion de herramientas de analisis de codigo durante el proceso de desarrollo del Software.
@@ -113,7 +115,6 @@ de la lista de requerimientos  para un desarrollo seguro:
 \begin{figure}[h!]  
     \includegraphics[width=\linewidth]{./imagenes/01_OWASP Application Security Verification Standard 4.0.png}
     \caption{ASVS 4.0 10.0.1 Security control.}  
-    \label{fig:9 - ASVS 4.0}
 \end{figure}
 
 Actualmete en mucho de los ciclos de desarrollo estas herramientas se encuentran integradas dentro de los procesos de Integración 
@@ -137,10 +138,11 @@ Es una plataforma de para el análisis estático de código, dispone de distinto
 lenguajes de programación. Entre las versiones disponibles de SonarQube, podemos hacer uso de la 
 versión \emph{“Community”} que es de uso libre.
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{width=1\linewidth}     
     \includegraphics[width=\linewidth]{./imagenes/02_SonarQubeEditions.png}
     \caption{Versiones Sonarqube 8.9.}  
-    \label{fig:10 - SonarQube editions}
 \end{figure}
 
 La versión \emph{“Community”} incluye escáneres para los siguientes lenguajes de programación:
@@ -170,7 +172,9 @@ Además, mediante extensiones de la comunidad podemos añadir escáneres para lo
     \item PL$\backslash$SQL
     \item C$\backslash$C++
 \end{itemize}    
+\clearpage
 \newpage
+
 \subsubsection{Dependency-check}
 Es una herramienta de análisis de dependencias que intenta detectar vulnerabilidades divulgadas públicamente contenidas en las dependencias de 
 un proyecto. Para ello, determina si existe un identificador de enumeración de plataforma común (CPE) para una dependencia determinada. Si lo encuentra, generará
@@ -191,19 +195,21 @@ El componente de análisis de dependencias de OWASP Dependency-Check puede ser e
 
 El uso de dependency-check desde la línea de comandos tiene los siguientes parámetros principales:\\
 
-\begin{table}[h!]
+\begin{table}[!htb]
   \begin{center}
-  \caption{Parámetros línea comandos dependency-check}
-  \label{tab:tabla 1}
-  \begin{tabular}{c|c}
-    \textbf{Parámetro} & \textbf{Descripción}\\
-    \hline
-      --project & Especifica el nombre del proyecto que aparecerá en el reporte.\\ 
-      --scan & Directorio donde se encuentran las librerías de terceros.\\
-      --out &  Directorio de salida del reporte de análisis de dependencias.\\
-      --suppresion & Fichero .xml que contiene vulnerabilidades que deben de ser excluidas del reporte 
-      (falsos positivos)      
-  \end{tabular}
+        \begin{tabular}{c| L{12cm}}
+        \hline 
+        \rowcolor{tema!10}
+        \textbf{Parámetro} & \textbf{Descripción}\\
+        \hline
+        --project & Especifica el nombre del proyecto que aparecerá en el reporte.\\ 
+        --scan & Directorio donde se encuentran las librerías de terceros.\\
+        --out &  Directorio de salida del reporte de análisis de dependencias.\\
+        --suppresion & Fichero .xml que contiene vulnerabilidades que deben de ser excluidas del reporte 
+        (falsos positivos)      
+    \end{tabular}
+    \caption{Parámetros línea comandos dependency-check}
+    \label{tab:tabla 1}
 \end{center}
 \end{table}
 
@@ -214,17 +220,19 @@ Ejemplo de uso:\\
       --scan "D:\CodigoAnalisis\Seguridad\juice-shop\node_modules" 
       --out "D:\CodigoAnalisis\Seguridad\WebGoat.NET\reports" 
 \end{verbatim}
+\clearpage
 \newpage
+
 \subsection{Herramientas de análisis dinámico de código}
 Para las ejecuciones de análisis dinámico haremos uso de la herramienta Zed Attack Proxy (ZAP) de OWASP en su versión 2.10. OWASP Zap es una de las herramientas de 
 software para análisis dinámico de aplicaciones que es mantenida y distribuida por la organización \href{https://owasp.org/www-project-zap/}{OWASP}. Su principal objetivo es el 
 análisis de seguridades en aplicaciones web orientados a empresas, se caracteriza por ser de código abierto y totalmente gratuita.\\
 
 La Interfax de OWASP ZAP Desktop está compuesta de los siguientes elementos:
-\begin{figure}[h!]  
-    \includegraphics[width=\linewidth]{./imagenes/02_SonarQubeEditions.png}
+\begin{figure}[h!] 
+    \captionsetup{width=1\linewidth}   
+    \includegraphics[width=\linewidth]{./imagenes/03_OWASPZAP_Interfaz.png}
     \caption{Interfaz OWASP Zap}  
-    \label{fig:11 - Interfaz OWASP Zap}
 \end{figure}
 
 \begin{itemize}

@@ -7,10 +7,11 @@ y más de 100.000 aplicaciones y servicios web del mundo real.
 
 En su última versión las vulnerabilidades más comunes encontradas fueron las siguientes:
 
-\begin{figure}[h!]  
+\begin{figure}[!htb] 
+    \centering
+    \captionsetup{width=1\linewidth} 
     \includegraphics[width=\linewidth]{./imagenes/012_OWASP_Top_10_2017.png}
     \caption{OWASP Top 10 2017.}  
-    \label{fig:1 - OWASP Top 10 2017}
 \end{figure}
 
 A continuación, detallamos en que consisten cada una de las vulnerabilidades listadas en el OWASP top 10:
@@ -30,34 +31,37 @@ comportamiento de aplicaciones.
 Por Ejemplo, en la siguiente aplicación tenemos un formulario para mostrar 
 la información de un usuario a partir de su identificador (ID):
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_1.png}
     \caption{Aplicación vulnerable SQLi.}  
-    \label{fig:2 - SQLi 1}
 \end{figure}
 
 Un uso normal generaría este tipo de peticiones:
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]  
+    \centering
+    \captionsetup{width=1\linewidth}
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_2.png}
     \caption{Petición normal.}  
-    \label{fig:3 - SQLi 2}
 \end{figure}
 
-Pero si abusamos de la aplicación modificando el ID por la consulta:
+\newpage
+Pero si abusamos de la aplicación modificando el ID por la consulta:\\
 \begin{verbatim}
     %' union select user,password from users# 
 \end{verbatim}
 
-Se genera la siguiente petición:
-\begin{figure}[h!]  
+Se genera la siguiente petición:\\
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{width=1\linewidth}  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_3.png}
     \caption{SQLi example.}  
     \label{fig:4 - SQLi 3}
 \end{figure}
 
-El resultado será que la aplicación nos devuelve todos los usuarios y password almacenados en la Base de datos:
-\begin{figure}[h!]  
+El resultado será que la aplicación nos devuelve todos los usuarios y password almacenados en la Base de datos:\\
+\begin{figure}[!htb]  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_4.png}
     \caption{Resultado ataque SQLi.}  
     \label{fig:5 - SQLi 3}
@@ -74,7 +78,9 @@ identidad de otros usuarios (temporal o permanentemente).
 En los últimos años se han detectado numerosas aplicaciones, sobre todo la que hacen uso de api para 
 la gestión de los datos, que hacen uso de JSON Web Tokens (JWT) para la autenticación y autorización. 
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]  
+    \centering
+    \captionsetup{width=1\linewidth}  
     \includegraphics[width=\linewidth]{./imagenes/014_BrokenAuthentication_1.png}
     \caption{Token JWT.}  
     \label{fig:Token JWT}
@@ -83,15 +89,20 @@ la gestión de los datos, que hacen uso de JSON Web Tokens (JWT) para la autenti
 La captura de este token permite a los atacantes a realizar peticiones en nombre del usuario, puesto que, 
 si decodificamos el token, podemos ver que identifica a un usuario concreto
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{width=1\linewidth}    
     \includegraphics[width=\linewidth]{./imagenes/014_BrokenAuthentication_2.png}
     \caption{Token JWT decodificado.}  
     \label{fig:Token JWT decodificado}
 \end{figure}
 
+\newpage
 Lo cual nos permite realizar cualquier petición en nombre del usuario haciendo uso de su token JWT.
 
-\begin{figure}[h!]  
+\begin{figure}[!htb] 
+    \centering
+    \captionsetup{width=1\linewidth}   
     \includegraphics[width=\linewidth]{./imagenes/014_BrokenAuthentication_3.png}
     \caption{Token JWT decodificado.}  
     \label{fig:Broken Authentication attack}
@@ -123,7 +134,7 @@ el documento XML. En general, existen tres tipos de entidades:
 
 Una entidad debe ser definida en el “Document Type Definition” (DTD), vemos un ejemplo:
 
-\begin{listing}[h]
+\begin{listing}[!htb]
     \inputminted{xml}{./Ficheros/DTD_example.xml}
     \caption{DTD example}
     \label{listing:1}
@@ -132,7 +143,9 @@ Una entidad debe ser definida en el “Document Type Definition” (DTD), vemos 
 En este caso el parser de XML carga la entidad externa \textbf{"SYSTEM"} que obtendrá el contenido del 
 fichero \textbf{"/etc/passwd"} y devolverá el contenido de este fichero en la respuesta:
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]  
+    \centering
+    \captionsetup{width=1\linewidth}  
     \includegraphics[width=\linewidth]{./imagenes/015_XXE_Attack_1.png}
     \caption{Ataque XXE.}  
     \label{fig:6 - XXE attack}
@@ -146,6 +159,7 @@ Este ataque puede conducir a la divulgación de datos confidenciales, denegació
 de solicitudes del lado del servidor, escaneo de puertos desde la perspectiva de la máquina donde se 
 encuentra el analizador y otros impactos del sistema.
 
+\newpage
 \subsection{A5:2017 - Pérdida de control de acceso (Broken Access Control)}
 
 Las restricciones sobre lo que los usuarios autenticados pueden hacer no se aplican
@@ -173,7 +187,7 @@ modificar (defacement) los sitios web, o redireccionar al usuario hacia un sitio
 
 Por ejemplo, si tenemos una aplicación como la siguiente con un formulario de entrada de datos como el siguiente:
 
-\begin{figure}[h!]  
+\begin{figure}[!htb]  
     \includegraphics[width=\linewidth]{./imagenes/016_XSS_1.png}
     \caption{Aplicacion insegura XXS.}  
     \label{fig:7 - Aplicacion insegura XXS.}
@@ -185,16 +199,17 @@ Si introducimos el siguiente script:
     <script>alert(document.cookie)</script>
 \end{verbatim}
 
-Vemos que al enviar el formulario se ejecuta el script en el navegador.
+Vemos que al enviar el formulario se ejecuta el script en el navegador.\\
 
-\begin{figure}[h!]  
+\begin{figure}[!htb] 
+    \centering
+    \captionsetup{width=1\linewidth}   
     \includegraphics[width=\linewidth]{./imagenes/016_XSS_2.png}
     \caption{Ataque XXS.}  
     \label{fig:8 - Ataque XXS.}
 \end{figure}
 
-Podemos distinguir tres tipos de ataques XSS:
-
+Podemos distinguir tres tipos de ataques XSS:\\
 \begin{itemize}
     \item \textbf{Reflejados:} Cuando el script malicioso esta presente en la petición HTTP.
     \item \textbf{Almacenados:} El script malicioso es almacenado en el servidor, en la base 
@@ -204,6 +219,7 @@ Podemos distinguir tres tipos de ataques XSS:
     malicioso incluye código html en la petición HTTP.
 \end{itemize}
 
+\newpage
 \subsection{A8:2017 - Deserialización insegura (Insecure Deserialization) }
 
 Estos defectos ocurren cuando una aplicación recibe objetos serializados dañinos y estos objetos
@@ -239,20 +255,25 @@ tipo serian:
 Por ejemplo, este código Java aprovecha la serialización para codificar una tarea que detenga 
 la aplicación durante 5 segundos:
 
-\begin{listing}[h]
+\begin{listing}[!htb]
     \inputminted{java}{./Ficheros/Serialize.java}
-    \caption{DTD example}
+    \caption{Java Serialize Code}
     \label{listing:2}
 \end{listing}
 
 Este código crea la tarea y la serializa generando el siguiente token:
 
 \begin{verbatim}
-    rO0ABXNyADFvcmcuZHVtbXkuaW5zZWN1cmUuZnJhbWV3b3JrLlZ1bG5lcmFibGVUYXNrSG9sZGVyAAAAAAAAAAICAANMABZyZXF1ZXN0ZWRFeGVjdXRpb25UaW1ldAAZTGphdmEvdGltZS9Mb2NhbERhdGVUaW1lO0wACnRhc2tBY3Rpb250ABJMamF2YS9sYW5nL1N0cmluZztMAAh0YXNrTmFtZXEAfgACeHBzcgANamF2YS50aW1lLlNlcpVdhLobIkiyDAAAeHB3DgUAAAflBgYSCgML+WfAeHQAB3NsZWVwIDV0AAZteVRhc2s=
+    rO0ABXNyADFvcmcuZHVtbXkuaW5zZWN1cmUuZnJhbWV3b3JrLlZ1bG5lcmFibGVUYXNrSG9sZGV
+    yAAAAAAAAAAICAANMABZyZXF1ZXN0ZWRFeGVjdXRpb25UaW1ldAAZTGphdmEvdGltZS9Mb2NhbE
+    RhdGVUaW1lO0wACnRhc2tBY3Rpb250ABJMamF2YS9sYW5nL1N0cmluZztMAAh0YXNrTmFtZXEAf
+    gACeHBzcgANamF2YS50aW1lLlNlcpVdhLobIkiyDAAAeHB3DgUAAAflBgYSCgML+WfAeHQAB3Ns
+    ZWVwIDV0AAZteVRhc2s=
 \end{verbatim}
 
 Dicho token al ser enviado en una petición al servidor provoca que la aplicación se detenga durante 5 segundos.
 
+\newpage
 \subsection{A9:2017 - Uso de componentes con vulnerabilidades conocidas}
 
 Los componentes como bibliotecas, frameworks y otros módulos se ejecutan con los mismos
@@ -268,5 +289,5 @@ atacantes mantener el ataque en el tiempo, pivotear a otros sistemas y manipular
 destruir datos. Los estudios muestran que el tiempo de detección de una brecha de seguridad es
 mayor a 200 días, siendo típicamente detectado por terceros en lugar de por procesos internos. 
 
-
-
+\clearpage
+\newpage

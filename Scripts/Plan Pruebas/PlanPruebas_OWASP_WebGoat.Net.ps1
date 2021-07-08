@@ -1,37 +1,63 @@
 ﻿
-$urlbase = "http://192.168.42.39:8080"
-$zap_proxy = "http://172.25.194.216:8082" 
+$urlbase = "http://192.168.2.130:5000"
+$zap_proxy = "http://172.18.24.246:8082" 
+$user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
 
 #---------------------------------------------------------------------------------------------------------------------------
 # Create User
 #---------------------------------------------------------------------------------------------------------------------------
 Clear-Host
-$createuser = $true
+
+$createuser = $false
 
 if($createuser){
-    $body = "username=eroldann&password=password&matchingPassword=password&agree=agree"
-    $response = wget "$urlbase/WebGoat/register.mvc" -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -Proxy $zap_proxy 
+
+    $response = wget "$urlbase/Account/Register" -UserAgent $user_agent  -Proxy $zap_proxy 
+    $token = $response.ParsedHtml.getElementsByName('__RequestVerificationToken').item(0).value
+
+
+    $body='Username=M0l1n3ta&Email=EmilioJRoldan%40gmail.com&CompanyName=Sogeti&Password=Sogeti1234&ConfirmedPassword=Sogeti1234&Address=Zabaleta+42&City=Madrid&Region=Madrid&PostalCode=28701&Country=Spain&role=admin&__RequestVerificationToken={0}' -f $token
+    $response = wget "$urlbase/Account/Register" -Method Post -Body $body -SessionVariable session  -ContentType "application/x-www-form-urlencoded" -Proxy $zap_proxy
+    $response.ParsedHtml.getElementsByTagName('strong').item(0).innerText
+    $response =  wget "$urlbase/Account/Logout" -WebSession $session -Proxy $zap_proxy
+     
 }
 
 #---------------------------------------------------------------------------------------------------------------------------
 # Login
 #---------------------------------------------------------------------------------------------------------------------------
-$body = "username=eroldann&password=password"
 $session = $null
-$response = wget "$urlbase/WebGoat/login" -SessionVariable session -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -UserAgent $user_agent  -Proxy $zap_proxy 
-$response.ParsedHtml.queryselector('.dropdown-menu').children.item(2).innerText
+$response = wget "$urlbase/Account/Login" -UserAgent $user_agent   -Proxy $zap_proxy 
+$token = $response.ParsedHtml.getElementsByName('__RequestVerificationToken').item(0).value
 
-$user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
+
+
+$body = "ReturnUrl=%2F&Username=M0l1n3ta&Password=Sogeti1234&__RequestVerificationToken={0}&RememberMe=false" -f $token
+$response = wget "$urlbase/Account/Login?returnUrl=%2F" -SessionVariable session -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -UserAgent $user_agent  -Proxy $zap_proxy 
+$response.ParsedHtml.getElementsByTagName('strong').item(0).innerText
 
 #---------------------------------------------------------------------------------------------------------------------------
 # SQLi attack
 #---------------------------------------------------------------------------------------------------------------------------
 
-$response = wget "$urlbase/WebGoat/SqlInjection.lesson.lesson" -WebSession $session -UserAgent $user_agent -Proxy $zap_proxy 
-if(!($response.ParsedHtml.getElementById('_what_is_sql').innerText -eq 'What is SQL?')){
-    Write-Host "Error Acceso leccion 1"
-    break
-}
+#Add ellements to cart
+$response = wget "$urlbase/Product/Details/20" -WebSession $session
+$token = $response.ParsedHtml.getElementsByName('__RequestVerificationToken').item(0).value
+
+$session.Headers.Add('Referer',"http://192.168.2.130:5000/Product/Details/20")
+$body = "Quantity=4&__RequestVerificationToken={0}" -f $token
+$response = wget "$urlbase/Card/AddOrder/20" -WebSession $session -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -UserAgent $user_agent  -Proxy $zap_proxy 
+$response.ParsedHtml.getElementsByTagName('h1').item(0).innerText
+
+# Make Order
+$response = wget "$urlbase/Checkout/Checkout" -WebSession $session -UserAgent $user_agent  -Proxy $zap_proxy 
+$token = $response.ParsedHtml.getElementsByName('__RequestVerificationToken').item(0).value
+
+$body = "ShipTarget=Sogeti&Address=Zabaleta+43&City=Madrid&Region=Madrid&PostalCode=28701&Country=Spain&ShippingMethod=1&CreditCard=4111+1111+1111+1111&ExpirationMonth=01&ExpirationYear=2022&__RequestVerificationToken={0}&RememberCreditCard=false" -f $token
+$response = wget "$urlbase/Checkout/Checkout" -WebSession $session -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -UserAgent $user_agent  -Proxy $zap_proxy 
+$order = $response.ParsedHtml.querySelector(".receiptDiv").children.item(0).innerText
+
+
 
 #A1 Injection
 

@@ -1,3 +1,4 @@
+\section{Métodologia de pruebas} 
 Como metodología de pruebas para el proceso haremos uso 
 de \href{https://owasp.org/www-pdf-archive/OWASP_Application_Security_Verification_Standard_4.0-en.pdf}{OWASP Application Security Verification Standard (ASVS) 4.0} 
 que proporciona una base para probar los controles técnicos de seguridad de las aplicaciones web. El proyecto clasifica
@@ -5,36 +6,19 @@ que proporciona una base para probar los controles técnicos de seguridad de las
 
  Para abordar el proceso de pentesting los dividiremos en las fase definidas en el 
  apartado 2.1.2, para la ejecución del proceso de pentesting ejecutaremos todas las fases menos la 
- de explotación y postexplotación.tación y Postexplotación.
+ de explotación y postexplotación.tación y Postexplotación.\\
 
-\textbf{Alcance y términos de la prueba de intrusión.}\\
- Para cada una de las aplicaciones crearemos un documento definición del plan de pruebas de seguridad donde se
-detallará toda la información de las pruebas de seguridad a ejecutar.
-\textbf{Recolección de información.}\\
-En esta fase ejecutaremos el análisis estático de dependencias y generaremos un reporte del análisis estático de código. Los resultados del 
-análisis estático servirán como base para crear un plan de pruebas para el análisis dinámico.
-\textbf{Análisis de vulnerabilidades.}\\
-En esta fase ejecutaremos el análisis dinámico de código a partir del plan de pruebas generado con la información obtenida en la fase anterior.
-
-En esta fase ejecutarán dos veces el escáner de análisis dinámico con distinto número de reglas:
-
-\begin{itemize}
-    \item \textbf{Escanér regular:} Para descubrir todas las posibles rutas validados debajo de los dominios 
-    a evaluar a partir del plan de pruebas definido con los datos de la fase anterior.
-    \item \textbf{Escáner Comleto:} A partir del escáner regular, para obtener el reporte definitivo después 
-    de revisar los errores encontrados para descartar los no relevantes y los falsos positivos.
-\end{itemize}
-
-\textbf{Generación de informes}\\
-Como resultado el proceso de ejecución de las pruebas de seguridad generaremos los siguientes documentos.
-
-\begin{itemize}
-    \item Definición del plan de pruebas de seguridad.
-    \item Reporte análisis estático de código.
-    \item Plan pruebas para el análisis dinámico.
-    \item Reporte análisis dinámico
-    \item Informe resultado ejecución pruebas de seguridad
-\end{itemize}
+ Fases de del proceso de pentesting aplicadas:\\
+ \begin{itemize}
+     \item Alcance y términos de la prueba de intrusión.
+     \item Recolección de información.
+     \item Análisis de vulnerabilidades.
+     \item Generación de informes.
+ \end{itemize}
+ 
+ Detallaremos el proceso en las siguietes secciones.
+\clearpage
+\newpage
 
 \subsection{Alcance y términos de la prueba de intrusión}
 Para cubrir este punto se genera un documento de plan de pruebas para cada sistema objetivo, este documento es 
@@ -54,6 +38,7 @@ Para los sistemas de prueba elegidos se han creado dichos los documentos en la s
 \href{https://github.com/M0l1n3ta/PFG/tree/master/Reportes/PPR%20-%20Plan%20de%20pruebas}{ruta}
 (\url{https://github.com/M0l1n3ta/PFG/tree/master/Reportes/PPR%20-%20Plan%20de%20pruebas}).
 
+\clearpage
 \subsection{Recolección de información}
 
 Para este punto de proceso se suelen utilizar numerosas herramientas y depende mucho de la persona que ejecute 
@@ -85,6 +70,7 @@ los defectos antes de que se realice el análisis estático de código de las ve
  de las distintas métricas de calidad del código.
 
 La generación de dicho reporte se ha automatizado en un pequeño programa que detallamos en el siguiente apartado.
+\clearpage
 
 \subsection{Generación reporte análisis estático de código}
 
@@ -106,14 +92,16 @@ Para ejecutar la aplicación:
 \end{verbatim}
 
 Para generar el reporte seleccionamos la primera opción \textbf{“Reporting tool”}:
-\begin{figure}[h!]  
+\begin{figure}[h!] 
+    \captionsetup{width=1\linewidth}   
     \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_1.png}
     \caption{SonarQube Reporting Tool}  
     \label{fig:15 - SonarQube Reporting tool}
 \end{figure}
 
 Seleccionamos el Proyecto de Sonarqube del cual queremos generar el reporte estático de código:
-\begin{figure}[h!]  
+\begin{figure}[h!] 
+    \captionsetup{width=1\linewidth}   
     \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_2.png}
     \caption{select Sonarqube project}  
     \label{fig:16}
@@ -121,7 +109,8 @@ Seleccionamos el Proyecto de Sonarqube del cual queremos generar el reporte est�
 
 Finalmente seleccionamos la segunda opción “Generate detailed report” para generar el reporte:
 
-\begin{figure}[h!]  
+\begin{figure}[h!]
+    \captionsetup{width=1\linewidth}    
     \includegraphics[width=\linewidth]{./imagenes/017_SonarQubeReportTool_3.png}
     \caption{Generar reporte análisis estatico}  
     \label{fig:17}
@@ -135,7 +124,8 @@ El reporte se generará en el directorio de ejecución:
     \caption{Generar reporte análisis estatico}  
     \label{fig:18}
 \end{figure}
-
+\clearpage
+\newpage
 
 \subsection{Análisis de vulnerabilidades.}
 Con la información de recogida en la fase anterior más y la que pueda añadir el pentester se crea un plan de pruebas 
@@ -151,4 +141,53 @@ para su ejecución configurando las peticiones para que pasen a través del prox
 Con todas las peticiones generadas por el plan de pruebas más las que el pentester decida añadir se irán almacenado 
 en una sesión de OWASP ZAP.
 
+Una vez finalizado el plan de pruebas lanzamos el spider para que descubra nuevas rutas en la aplicación
+
+\begin{figure}[!htb]
+    \captionsetup{width=1\linewidth}  
+    \includegraphics[width=\linewidth]{./imagenes/03_01_WebGoat_ZapProxySpider.png}
+    \caption{OWASP ZAP Spider}  
+    \label{fig:OWASPZap Spider}
+\end{figure}
+
 \newpage
+Con la url añadidas desde el plan de pruebas, más la detectadas con el proceso de \textbf{“Spider”}, más la que el 
+pentester considere añadir lanzamos el proceso de análisis dinámico de código. Para ello seleccionamos la url de pruebas 
+y con el segundo botón seleccionamos \textbf{“Attack > Active Scan”}
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{width=1\linewidth}  
+    \includegraphics[width=\linewidth]{./imagenes/03_02_WebGoat_ZapProxyActiveScan.png}
+    \caption{OWASP ZAP Active Scan}  
+    \label{fig:OWASPZap Active Scan}
+\end{figure}
+
+Para iniciar el escáner dinámico seleccionamos la política \textbf{“Default Policy”} e iniciamos con \textbf{“Start Scan”}:
+
+\begin{figure}[!htb]
+    \centering
+    \captionsetup{width=1\linewidth}   
+    \includegraphics[scale=0.7]{./imagenes/03_03_WebGoat_ZapProxyActiveScanStart.png}
+    \caption{OWASP ZAP Active Scan Start}  
+    \label{fig:OWASPZap Active Scan Start}
+\end{figure}
+
+\clearpage
+\newpage
+
+\subsection{Generación de informes.}
+
+Como resultado el proceso de ejecución de las pruebas de seguridad generaremos los siguientes documentos:
+
+\begin{itemize}
+    \item Definición del plan de pruebas de seguridad.
+    \item Reporte análisis estático de código.
+    \item Plan pruebas para el análisis dinámico.
+    \item Reporte análisis dinámico.
+    \item Informe resultado ejecución pruebas de seguridad
+\end{itemize}
+
+\clearpage
+\newpage
+

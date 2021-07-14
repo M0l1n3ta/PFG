@@ -1,5 +1,5 @@
 ﻿
-$urlbase = "http://192.168.2.130:5000"
+$urlbase = "http://192.168.43.157:5000"
 $zap_proxy = "http://172.18.24.246:8082" 
 $user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
 
@@ -27,13 +27,16 @@ if($createuser){
 # Login
 #---------------------------------------------------------------------------------------------------------------------------
 $session = $null
-$response = wget "$urlbase/Account/Login" -UserAgent $user_agent   -Proxy $zap_proxy 
+$pet = wget $urlbase -SessionVariable session  -Proxy $zap_proxy 
+
+$session.Headers.Add('Referer',"http://192.168.2.130:5000")
+$response = wget "$urlbase/Account/Login" -UserAgent $user_agent -WebSession $session  -Proxy $zap_proxy 
 $token = $response.ParsedHtml.getElementsByName('__RequestVerificationToken').item(0).value
 
 
 
 $body = "ReturnUrl=%2F&Username=M0l1n3ta&Password=Sogeti1234&__RequestVerificationToken={0}&RememberMe=false" -f $token
-$response = wget "$urlbase/Account/Login?returnUrl=%2F" -SessionVariable session -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -UserAgent $user_agent  -Proxy $zap_proxy 
+$response = wget "$urlbase/Account/Login?returnUrl=%2F" -WebSession $session  -Method Post -Body $body -ContentType "application/x-www-form-urlencoded" -UserAgent $user_agent  -Proxy $zap_proxy 
 $response.ParsedHtml.getElementsByTagName('strong').item(0).innerText
 
 #---------------------------------------------------------------------------------------------------------------------------
@@ -41,6 +44,7 @@ $response.ParsedHtml.getElementsByTagName('strong').item(0).innerText
 #---------------------------------------------------------------------------------------------------------------------------
 
 #Add ellements to cart
+$session.Headers['Referer'] = "http://192.168.2.130:5000/Product/Details/20"
 $response = wget "$urlbase/Product/Details/20" -WebSession $session
 $token = $response.ParsedHtml.getElementsByName('__RequestVerificationToken').item(0).value
 

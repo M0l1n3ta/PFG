@@ -1,9 +1,90 @@
-\chapter{Introducción.}
-\section{motivación y objetivos}
+\chapter{Introducción}
 
-  El motivo principal que me ha llevado a realizar este proyecto es relatar como realizar un proceso 
-de pentesting resaltando dos herramientas que a día de hoy hay muchos pentester que no suelen utilizar
-como son los análisis de código, sobre todo la parte estática, así como la integración de dichas 
-pruebas en el ciclo de desarrollo Software.
+La ciberseguridad es un derivado de la seguridad TI. Involucra todos los procesos y técnicas utilizadas para proteger 
+la información digital alojada en computadoras, servidores y redes del acceso no autorizado, ataques o su destrucción.\\
 
-\clearpage
+A diferencia de la seguridad TI, que protege tanto la información física como digital, la ciberseguridad 
+solo se enfoca en proteger la información digital.\\
+
+En los últimos tiempos el desarrollo de software ha acortado los tiempos  desarrollo, pasando del ciclo clásico de desarrollo 
+en cascada con tiempos de desarrollo de meses a un ciclo de desarrollo ágil con un tiempo de desarrollo de semanas. Este acortamiento 
+de los tiempos de desarrollo ha llevado apareados cambios en todo los procesos involucrados en el proceso de desarrollo del 
+software incluidos los procesos de pruebas de seguridad.\\
+
+Además, el acortamiento de los tiempos de desarrollo también ha provocado la necesidad de una mayor conexión 
+ente los distintos miembros involucrados en los distintos procesos de desarrollo del software.\\ 
+
+Es por ello por lo que en el presente PFG trato de describir un proceso de pentesting que ayude a pentester a reducir 
+el tiempo necesario en el desarrollo de la pruebas de seguridad necesarias para poder desplegar un proyecto en producción 
+en el menor tiempo posible.\\ 
+
+Además de generar mecanismos de comunicación con el equipo de desarrollo enfocados en resolver los problemas que detecten 
+dichas pruebas de seguridad en el menor tiempo posible.\\
+
+\newpage
+\section{Motivación}
+
+En el tiempo que llevo involucrado en proyectos de la ciberseguridad he visto muchas herramientas y metodologías que abordan 
+el proceso de pruebas de seguridad o pruebas de pentesting.\\
+
+Normalmente, el proceso de pentesting es un proceso manual y muy dependiente de la persona que realice las mismas 
+y muchas veces los reportes presentado solo se dedican a señalar el problema y no suelen enfocarse a la solución de los problemas.\\
+
+Es por ello por lo que el presente proyecto fin de grado quería plasmar un proceso de pentesting que sirva de punto de partida
+para la realización de pruebas de seguridad al pentester y que se encuentre alineado con el ciclo de desarrollo software
+y enfocado a la solución de los problemas que se detecten en la evaluación de un software.\\
+
+\section{Objetivos}
+Durante la realización de este TFG se pretende realizar una breve introducción al proceso de pentesting, la fase que involucran 
+dicho proceso, las herramientas que se pueden utilizar para llevar a cabo dicho proceso, así como la descripción de los fallos más
+comunes que se suelen encontrar en las evaluaciones y detallar los documentos que se deben generar enfocados a tener
+una comunicación con el equipo de desarrollo encaminados a la solución de los defectos 
+y a la mejora de la calidad del software evaluado.\\
+
+Para poder lograr lo que se ha indicado en el párrafo anterior, se plantean los siguientes objetivos:
+
+\begin{itemize}
+    \item Detalle del proceso de pentesting y sus fases.
+    \item Detallar los defectos de seguridad más comunes que se suelen encontrar en la ejecución de pruebas de seguridad o pentesting.
+    \item Detallar la realización de los análisis de código estático y dinámicos de aplicaciones que hagan uso de las tecnologías más comunes en la web.
+    \item Desarrollo de una pequeña herramienta que facilite la realización de los reportes de análisis 
+    estáticos de código enfocados a la comunicación con el equipo de desarrollo de cara a la solución de los defectos 
+    encontrados y a la mejora de a calidad del software analizado. 
+    \item Ejecución del proceso de pentesting sobre aplicaciones que usen las tecnologías de desarrollo más comunes 
+    en el desarrollo de aplicaciones web.
+\end{itemize}
+
+\section{Metodología y Competencias}
+
+Para la realización del PFG haremos uso de la 
+metodología \href{https://owasp.org/www-pdf-archive/OWASP_Application_Security_Verification_Standard_4.0-en.pdf}{OWASP Application Security Verification Standard (ASVS) 4.0} \cite{web2} que 
+proporciona una base para probar los controles técnicos de seguridad de las aplicaciones web.\\ 
+
+Las competencias que se tienen que seguir para la correcta realización del proyecto son:
+
+\textbf{[CO1]} Capacidad para diseñar, desarrollar, seleccionar y evaluar aplicaciones y sistemas informáticos, asegurando 
+su fiabilidad, seguridad y calidad, conforme a principios éticos y a la legislación y normativa vigente.\\
+
+\textbf{[IC6]} Capacidad para comprender, aplicar y gestionar la garantía y seguridad de los sistemas informáticos.\\
+
+\textbf{[TI7]} Capacidad para comprender, aplicar y gestionar la garantía y seguridad de los sistemas informáticos.\\
+
+\section{Estructura del proyecto}
+
+El presente PFG está estructurado en cinco capítulos.\\
+
+En el capítulo primero, se expone la introducción, los objetivos, la metodología, la estructura, etc.\\
+
+En el capítulo dos estará enfocado al análisis del estado del arte, donde expondremos en que consiste el proceso de pentesting y 
+sus fases. También se detallarán los defectos de seguridad más comunes encontrados en los procesos de pentesting 
+además de describir a nivel teórico los procesos de análisis estático y dinámico de código.\\
+
+El capítulo tres estará enfocado al diseño de la solución técnica para llevar a cabo el proceso de pentesting.\\ 
+
+En capítulo cuatro se hará uso del proceso definido en el capitulo tres sobre aplicaciones desarrolladas con las tecnologías 
+más comunes en el desarrollo de aplicaciones web.\\
+
+En el capítulo seis se expondrán las conclusiones del proyecto, así como posibles trabajos futuros sobre este tema.
+También se incluye un anexo donde se detallarán los informes generados en la realización del proceso de pentesting.\\
+
+\newpage

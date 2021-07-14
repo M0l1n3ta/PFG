@@ -1,6 +1,8 @@
 <properties>
     <dependency-check-maven.version>6.1.6</dependency-check-maven.version>
-	<sonar.dependencyCheck.htmlReportPath>./reports/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+	<sonar.dependencyCheck.htmlReportPath>
+		./reports/dependency-check-report.html
+	</sonar.dependencyCheck.htmlReportPath>
 	<sonar.dependencyCheck.summarize>true</sonar.dependencyCheck.summarize>
 	<sonar.host.url>http://localhost:9000/</sonar.host.url>
 </properties>

@@ -1,0 +1,46 @@
+\section{Conclusiones} 
+Una vez finalizado el desarrollo del trabajo creo que se ha conseguido detallar un proceso de pentesting que puede ser 
+utilizado por cualquiera para obtener los defectos de seguridad en un proceso reproducible.
+
+Se han detallado herramientas que pueden ser utilizadas, así como los documentos a generar de cara a una comunicación con 
+el equipo de desarrollo enfocada a la resolución de los defectos encontrados en el software analizado.
+
+Se ha desarrollado una utilidad que permite la extracción de la información de los análisis estáticos de código 
+para incluirlos en reportes basados en una plantilla predefinida.
+
+Se ha aportado un entorno de pruebas reproducible para la ejecución de análisis de código, tanto estático como dinámicos.
+
+Se ha aplicado dicho proceso sobre distintas tecnologías generando los documentos requeridos por el proceso de pentesting 
+para la obtención de los defectos presentes en dichas aplicaciones. Además, se han analizado dichos defectos 
+incluyendo en los distintos documentos los planes para remediar dicho defectos para cada aplicación.
+
+En mi opinión creo que se ha cumplido el objetivo general que tenía en mente que era detallar todo el proceso de pentesting
+para poder ejecutarse por parte de un pentester de forma que proporcione una base y unos documentos 
+específicos que pueden servir de partida para la detección de los defectos de seguridad, o defectos en general 
+presentes en cualquier código. Como se ha visto en los casos de prueba, dependerá en gran medida del conocimiento 
+sobre la aplicación y el diseño de un plan de pruebas en constante evolución que puedan llegar a detectar el 
+mayor número de defectos posibles presentes en un determinado código.
+
+\newpage
+\section{Trabajo futuro} 
+
+Uno paso lógico, para continuar en la línea del proyecto, sería integrar en proceso descrito en el presente PFG en una \gls{pipeline}
+que permitiese la ejecución del proceso de forma automática en los procesos de desarrollo e integración continuos.
+
+Algunas de las tecnologías donde se podría crear dicha \gls{pipeline} podrían ser:
+
+\begin{itemize}
+    \item Azure Devops
+    \item Jenkin 
+    \item GitHub Actions
+\end{itemize}
+
+Para lograr integrar el proceso dentro de una \gls{pipeline} habría que modificar la herramienta de creación de reportes para que 
+aceptase parámetros en línea de comandos para permitir la integración de la herramienta en dicho proceso.
+
+Uno de los trabajos  a mejorar, del presente PFG, son lo planes de prueba de forma que detecten un mayor número de los defectos 
+presentes en cada una de las aplicaciones de prueba.
+
+Añadir más tecnologías de desarrollo web como puede ser el caso de .Net Core, que si bien en un principio opté por incluir tuve 
+que descartar puesto que no encontré aplicaciones que tuviesen implementados todos los defectos 
+del OWASP top 10 de forma similar a la aplicaciones escogidas para este PFG.

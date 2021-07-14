@@ -5,13 +5,11 @@ Según la definición de OWASP \cite{web1} un test de penetración o pentesting,
 prueba de caja negra, es esencialmente el arte de probar
 un sistema o aplicación para descubrir vulnerabilidades de seguridad, sin conocer el funcionamiento interno de la mismas. Normalmente el equipo 
 encargado de las pruebas de penetración accede a las aplicaciones como si fuesen usuarios. El pentester tratará con 
-que ese nivel de acceso encontrar vulnerabilidades que se puedan explotar en la aplicación.
+que ese nivel de acceso encontrar vulnerabilidades que se puedan explotar en la aplicación.\\
 
 El propósito de la prueba de penetración es determinar la presencia 
 de vulnerabilidades potencialmente explotables y analizar el impacto de estas,
 sí se detecta alguna. La mejor forma de probar una defensa es tratando de penetrar en ella.
-\clearpage
-\newpage
 
 \subsection{Fases del prueba de intrusión}
 A la hora de realizar una prueba de intrusión o pentest distinguimos las siguientes fases, basándonos en 
@@ -24,6 +22,7 @@ la distinción realizada en pentesting con Kali  \cite{ref1};  dicjhas fases son
     \item Postexplotación del sistema.
     \item Generación de informes.
 \end{itemize}
+
 \subsubsection{Alcance y términos de la prueba de intrusión.}  
 Para esta fase normalmente se genera un documento de plan de pruebas. En muchos casos es 
 necesaria la revisión y aprobación de dicho documento por parte del dueño del sistema a probar 
@@ -40,7 +39,7 @@ necesaria la revisión y aprobación de dicho documento por parte del dueño del
 
 \subsubsection{Recolección de información.}
 Una vez definido el plan de pruebas procederemos a recolectar información 
-del sistema o aplicación indicado en dicho plan. 
+del sistema o aplicación indicado en dicho plan.\\ 
         
 Principalmente obtendremos información mediante los procesos de enumeración y 
 análisis de código que detallaremos en el siguiente capítulo. 
@@ -62,9 +61,14 @@ exploits a utilizar sobre la aplicación o sistema objetivo.
 En este caso también es necesario solicitar permiso al dueño del sistema, detallando 
 la forma en que persistirá el ataque en la aplicación o sistema objetivo.
 
+\newpage
 \subsubsection{Generación de informes.}
 
-Llegados a este punto ya se deben haber hecho entrega de los reportes del análisis estático, si se dispone de acceso al código fuente, y del reporte de análisis dinámico. Sí se ejecutasen los procesos de explotación o Postexplotación se ampliaría el reporte de análisis dinámico con la información recabada en dichos procesos.
+Llegados a este punto ya se deben haber hecho entrega de los reportes del 
+análisis estático, si se dispone de acceso al código fuente, y del reporte 
+de análisis dinámico. Sí se ejecutasen los procesos de explotación 
+o Postexplotación se ampliaría el reporte de análisis dinámico 
+con la información recabada en dichos procesos.\\
 
 A parte de los reportes anteriores, se debe entregar un informe de resultado de 
 pruebas con el resultado de ejecución del proceso de pentest incluyendo en 
@@ -72,7 +76,6 @@ el mismo el detalle de los defectos reportados en el sistema de gestión de
 defectos, si es posible, así como el estado en que se encuentran en el momento
 de entrega de dicho reporte.
 
-\clearpage
 \newpage
 
 \section{Detalle y Clasificación de vulnerabilidades OWASP Top 10}
@@ -136,7 +139,7 @@ de las siguientes herramientas:
 \subsubsection{SonarQube}
 Es una plataforma de para el análisis estático de código, dispone de distintos escáneres para la mayor parte de 
 lenguajes de programación. Entre las versiones disponibles de SonarQube, podemos hacer uso de la 
-versión \emph{“Community”} que es de uso libre.
+versión \emph{“Community”} que es de uso libre.\\
 
 \begin{figure}[!htb]
     \centering
@@ -172,16 +175,16 @@ Además, mediante extensiones de la comunidad podemos añadir escáneres para lo
     \item PL$\backslash$SQL
     \item C$\backslash$C++
 \end{itemize}    
-\clearpage
+
 \newpage
 
 \subsubsection{Dependency-check}
 Es una herramienta de análisis de dependencias que intenta detectar vulnerabilidades divulgadas públicamente contenidas en las dependencias de 
 un proyecto. Para ello, determina si existe un identificador de enumeración de plataforma común (CPE) para una dependencia determinada. Si lo encuentra, generará
-un informe vinculado a las entradas \gls{cve} asociadas.
+un informe vinculado a las entradas \gls{cve} asociadas.\\
 
 Actualmente OWASP Dependency-Check puede analizar dependencias de proyectos Java y .Net, que se encuentran totalmente soportados otros lenguajes como Ruby, Node.js, 
-PHP (composer), Swift Package Manager y Python tienen un soporte más limitado.
+PHP (composer), Swift Package Manager y Python tienen un soporte más limitado.\\
 
 El componente de análisis de dependencias de OWASP Dependency-Check puede ser ejecutado de las siguientes formas:
 
@@ -220,7 +223,7 @@ Ejemplo de uso:\\
       --scan "D:\CodigoAnalisis\Seguridad\juice-shop\node_modules" 
       --out "D:\CodigoAnalisis\Seguridad\WebGoat.NET\reports" 
 \end{verbatim}
-\clearpage
+
 \newpage
 
 \subsection{Herramientas de análisis dinámico de código}

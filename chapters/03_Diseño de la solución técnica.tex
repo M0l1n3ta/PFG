@@ -22,7 +22,7 @@ de Docker con la siguientes características y herramientas instaladas en cada u
     \end{center}
   \end{table}
 
-Para levantar el contenedor podemos hacer uso de dockercompose incluido en la carpeta \textbf{"entornoPrueba"} dentro de 
+Para levantar el contenedor podemos hacer uso de docker compose incluido en la carpeta \textbf{"entornoPrueba"} dentro de 
 las \href{https://github.com/M0l1n3ta/PFG/tree/master}{fuentes de proyecto}
 
 Para levantar el entorno ejecutamos:\\
@@ -38,7 +38,6 @@ Para levantar el entorno ejecutamos:\\
     \caption{Docker compose up}  
 \end{figure}
 
-\clearpage
 \newpage
 Una vez que se veamos las siguientes líneas en el log:\\
 \begin{figure}[!htb] 
@@ -47,8 +46,7 @@ Una vez que se veamos las siguientes líneas en el log:\\
     \caption{SonarQube server running}  
 \end{figure}
 
-Podremos acceder a la página de SonarQube en 
-la url \href{http://localhost:9000}{http://localhost:9000}\\
+Podremos acceder a la página de SonarQube en la url \href{http://localhost:9000}{http://localhost:9000}\\
 \begin{figure}[!htb] 
     \captionsetup{width=1\linewidth}   
     \includegraphics[width=\linewidth]{./imagenes/06_SonarQubeServer_Webpage.png}
@@ -56,15 +54,10 @@ la url \href{http://localhost:9000}{http://localhost:9000}\\
     \label{fig:21}
 \end{figure}
 
-\clearpage
-\newpage
-El fichero del docker compose \ref{alg:dockercompose} muestra los componentes de a aquitectura utilizados:
-
+El fichero del docker compose \ref{alg:dockercompose} muestra los componentes de la arquitectura utilizados:\nopagebreak
 \begin{listing}
     \centering
     \inputminted{yaml}{./EntornoPruebas/SonarQube_8.2/docker-compose.yml}
     \caption{Docker Compose}
     \label{alg:dockercompose}
 \end{listing}
-
-\clearpage

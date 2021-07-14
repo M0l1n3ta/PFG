@@ -14,7 +14,7 @@ En su última versión las vulnerabilidades más comunes encontradas fueron las 
     \caption{OWASP Top 10 2017.}  
 \end{figure}
 
-A continuación, detallamos en que consisten cada una de las vulnerabilidades listadas en el OWASP top 10:
+A continuación, detallamos en qué consisten cada una de las vulnerabilidades listadas en el OWASP top 10:
 
 \subsection{A1:2017 - Inyecciones}
 
@@ -42,7 +42,7 @@ Un uso normal generaría este tipo de peticiones:
     \centering
     \captionsetup{width=1\linewidth}
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_2.png}
-    \caption{Petición normal.}  
+    \caption{Petición normal}  
 \end{figure}
 
 \newpage
@@ -56,7 +56,7 @@ Se genera la siguiente petición:\\
     \centering
     \captionsetup{width=1\linewidth}  
     \includegraphics[width=\linewidth]{./imagenes/013_SQLi_Example_3.png}
-    \caption{SQLi example.}  
+    \caption{Ejemplo Ataque SQLi.}  
     \label{fig:4 - SQLi 3}
 \end{figure}
 
@@ -104,7 +104,7 @@ Lo cual nos permite realizar cualquier petición en nombre del usuario haciendo 
     \centering
     \captionsetup{width=1\linewidth}   
     \includegraphics[width=\linewidth]{./imagenes/014_BrokenAuthentication_3.png}
-    \caption{Token JWT decodificado.}  
+    \caption{Ataque Broken Authentication.}  
     \label{fig:Broken Authentication attack}
 \end{figure}
 
@@ -140,7 +140,7 @@ Una entidad debe ser definida en el “Document Type Definition” (DTD), vemos 
     \label{listing:1}
 \end{listing}
 
-En este caso el parser de XML carga la entidad externa \textbf{"SYSTEM"} que obtendrá el contenido del 
+En este caso el \gls{parser} de XML carga la entidad externa \textbf{"SYSTEM"} que obtendrá el contenido del 
 fichero \textbf{"/etc/passwd"} y devolverá el contenido de este fichero en la respuesta:
 
 \begin{figure}[!htb]  
@@ -181,9 +181,9 @@ componentes desactualizados, etc.
 
 Los XSS ocurren cuando una aplicación toma datos no confiables y los envía al navegador web
 sin una validación y codificación apropiada; o actualiza una página web existente con datos
-suministrados por el usuario utilizando una API que ejecuta JavaScript en el navegador. Permiten
-ejecutar comandos en el navegador de la víctima y el atacante puede secuestrar una sesión,
-modificar (defacement) los sitios web, o redireccionar al usuario hacia un sitio malicioso.
+suministrados por el usuario utilizando una API que ejecuta JavaScript en el navegador.
+
+Permiten ejecutar comandos en el navegador de la víctima y el atacante puede secuestrar una sesión, modificar (\gls{defacement}) los sitios web, o redireccionar al usuario hacia un sitio malicioso.
 
 Por ejemplo, si tenemos una aplicación como la siguiente con un formulario de entrada de datos como el siguiente:
 
@@ -211,7 +211,7 @@ Vemos que al enviar el formulario se ejecuta el script en el navegador.\\
 
 Podemos distinguir tres tipos de ataques XSS:\\
 \begin{itemize}
-    \item \textbf{Reflejados:} Cuando el script malicioso esta presente en la petición HTTP.
+    \item \textbf{Reflejados:} Cuando el script malicioso está presente en la petición HTTP.
     \item \textbf{Almacenados:} El script malicioso es almacenado en el servidor, en la base 
     de datos, en un fichero del sistema o cualquier otor objeto, y es visible cuando se muestra 
     la página en el navegador.
@@ -289,5 +289,5 @@ atacantes mantener el ataque en el tiempo, pivotear a otros sistemas y manipular
 destruir datos. Los estudios muestran que el tiempo de detección de una brecha de seguridad es
 mayor a 200 días, siendo típicamente detectado por terceros en lugar de por procesos internos. 
 
-\clearpage
+
 \newpage

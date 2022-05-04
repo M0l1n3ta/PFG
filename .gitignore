@@ -292,5 +292,5 @@ Pruebas/
 build/
 *.tmp
 
-Reportes/DVWA/~$R DVWA - Plan Pruebas de Seguridad.docx
-Reportes/Análisis estatico de código/~$porteAnalisisestatico_WebGoat.docx
+**/~$*.docx
+
